@@ -1,0 +1,122 @@
+# Avanser konfigurasjonsfil for Nukkit
+# Noen av disse innstillingene er trygge, andre kan ødelegge serveren din hvis de er endret feil
+# Nye innstillinger/standarder vil ikke bli tillagt denne filen automatisk ved oppgradering
+
+settings:
+ #Flerspråksinnstillinger
+ #Tilgjengelige: eng, chs, cht, jpn, rus, spa, pol, bra, kor, ukr, deu, ltu, nor
+ language: "nor"
+ #Om alle oversatte linjer skal sendes (tvinges) fra server eller om enhetene selv skal håndtere språk
+ force-language: false
+ shutdown-message: "Server stengt"
+ #Tillat plugins via Query
+ query-plugins: true
+ #Vis en beskjed i terminalvindu når en plugin bruker utgåtte API-metoder
+ deprecated-verbose: true
+ #Antal AsyncTask jobber
+ #Hvis den er satt til auto vil den prøve å dedektere antall kjerner (og da minst 4)
+ async-workers: auto
+
+network:
+ #Terskel for dosering av pakker, i bytes. Bare disse pakkene vil bli komprimert
+ #Sett 0 for å komprimere alt, -1 for å deaktivere
+ batch-threshold: 256
+ #Komprimeringsnivå brukt for Zlib ved sening av pakker. Høyt = mere CPU, mindre bruk av båndbreddde
+ compression-level: 7
+ #Bruk AsyncTasks ved komprimering. Tillegger halv/en hel tick forsinkelse, mindre CPU-bruk på hovedtråd
+ async-compression: false
+
+debug:
+ #Hvis > 1, vil det bli vist feilsøkingsinfo i terminal
+ level: 1
+ #Tillat kommandoer: /status /gc
+ commands: false
+
+timings:
+ #Tillat kjerne og plugin timing som standard
+ enabled: false
+ #Tillat ovevåking på ordrikt nivå, inkludert høyfrekvente tilfeller
+ verbose: false
+ #Interval mellom historiske rammer i ticks
+ #Standard er 5 minuter (6000 ticks)
+ history-interval: 6000
+ #Lengde for hele timinghistorie i ticks
+ #Standard er 1 time (72000 ticks)
+ #Denne verdien er begrenset med et maksimum tilsvarende historieinterval * 12
+ history-length: 72000
+ #For spesielle tilfeller for servere med spesial tillatelser til å bypasse maksimum
+ #Denne maksgrensen gjør at man holder fornuftige filstørrelser på Aikar sin Timer parser side
+ #Å sette denne vil ikke hjelpe deg med å bypasse maksimum uten at Aikar har satt et untak på API siden
+ bypass-max: false
+ #Hvis denne er satt til True vil ikke navnet på server din bli sendt ut
+ privacy: false
+ #Setter seksjoner som kan ignoreres. Disse seksjonene vil ikke bli sendt til Aikar sin Timer parser
+ #For eksempel: [all] eller [settings, timings]
+ ignore: []
+
+level-settings:
+ #Standard format som blir brukt når det lages ny level
+ default-format: anvil
+ #Automatisk skift level ticks rate for å holde 20 ticks per sekund
+ auto-tick-rate: true
+ auto-tick-rate-limit: 20
+ #Sett basis tick rate (1 = 20 ticks per sekund, 2 = 10 ticks per sekund osv)
+ base-tick-rate: 1
+ #Tick alle spillere hvert tick når andre innstillinger ikke tillater dette
+ always-tick-players: false
+
+chunk-sending:
+ #Amount of chunks sent to players per tick
+ per-tick: 4
+ #Amount of chunks sent around each player
+ max-chunks: 192
+ #Amount of chunks that need to be sent before spawning the player
+ spawn-threshold: 56
+ #Save a serialized copy of the chunk in memory for faster sending
+ #Useful in mostly-static worlds where lots of players join at the same time
+ cache-chunks: false
+
+chunk-ticking:
+ #Max amount of chunks processed each tick
+ per-tick: 40
+ #Radius of chunks around a player to tick
+ tick-radius: 3
+ light-updates: false
+ clear-tick-list: false
+
+chunk-generation:
+ #Max. amount of chunks in the waiting queue to be generated
+ queue-size: 8
+ #Max. amount of chunks in the waiting queue to be populated
+ population-queue-size: 8
+
+ticks-per:
+ animal-spawns: 400
+ monster-spawns: 1
+ autosave: 6000
+ cache-cleanup: 900
+
+spawn-limits:
+ #Max amount of these entities
+ monsters: 70
+ animals: 15
+ water-animals: 5
+ ambient: 15
+ 
+player:
+ #If true, player data will be saved as players/playername.dat
+ #If false, nukkit won't save player data as "dat" files, in order that plugins can do something on it.
+ save-player-data: true
+ 
+aliases:
+ #Aliases for commands
+ #Examples:
+ #showtheversion: version
+ #savestop: [save-all, stop]
+
+worlds:
+ #These settings will override the generator set in server.properties and allows loading multiple levels
+ #Example:
+ #world:
+ # seed: 404
+ # generator: FLAT:2;7,59x1,3x3,2;1;decoration(treecount=80 grasscount=45)
